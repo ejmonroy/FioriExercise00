@@ -1,0 +1,47 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="df.com.training.FioriExercise00.controller.View1" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<sap.ui.layout:VerticalLayout xmlns:sap.ui.layout="sap.ui.layout" width="100%" id="layout0">
+						<sap.ui.layout:content>
+							<Text xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" text="{i18n>helloWorld}" id="text2"
+								visible="{viewModel>/txtVisible}"/>
+							<Button xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+								text="{=${viewModel>/txtVisible}? ${i18n>hideText}:${i18n>showText}}" id="button0" press="onPress"/>
+							<ComboBox xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" id="box0">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="item-1-key" text="Item 1 Text" id="item0"/>
+									<core:Item xmlns:core="sap.ui.core" key="item-2-key" text="Item 2 Text" id="item1"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" id="box1" items="{viewModel>/aItems}"
+								selectionChange="onSelectionChange">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{viewModel>sKey}" text="{viewModel>sText}" id="item2"/>
+								</items>
+							</ComboBox>
+							<ComboBox xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" id="box2" items="{/RicefSet}"
+								selectionChange="onSelectionChange2" selectedKey="{viewModel>/selectedKey}" change="onSelectionChange2">
+								<items>
+									<core:Item xmlns:core="sap.ui.core" key="{RicefId}" text="{RicefId}" id="item3"/>
+								</items>
+							</ComboBox>
+							<ObjectHeader xmlns="sap.m" id="header0" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+								cd:w5g.dt.context="/RicefSet" title="{RicefId}" number="{ParamCount}" numberUnit="{/#Ricef/ParamCount/@sap:label}">
+								<statuses>
+									<ObjectStatus text="{=${ActiveCount} === &quot;000&quot; ?${i18n>statusInactive}:${i18n>statusActive}}" state="Success" id="status0"/>
+									<ProgressIndicator xmlns="sap.m" percentValue="{=${ActiveCount} * 100 /${ParamCount}}" id="indicator0"/>
+								</statuses>
+								<attributes>
+									<ObjectAttribute id="attribute0" text="{ActiveCount}/{ParamCount}" title="{/#Ricef/ActiveCount/@sap:label}/{/#Ricef/ParamCount/@sap:label}"/>
+								</attributes>
+							</ObjectHeader>
+						</sap.ui.layout:content>
+					</sap.ui.layout:VerticalLayout>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
